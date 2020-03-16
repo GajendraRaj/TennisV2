@@ -6,16 +6,24 @@ export const Score = (props) => {
     const SCORE_LOOKUP = ["Love", "Fifteen", "Thirty", "Forty"];
     const [score, setScore] = useState(Constants.INITIAL_SCORE);
     const { player1Score, player2Score } = props;
-    const isPlayersScoreEqual = player1Score === player2Score;
-    const isDeuce = player1Score >= 3;
-
+    
     useEffect(() => {
         const gameScore = () => {
+            const isPlayersScoreEqual = player1Score === player2Score;
+            const isDeuce = player1Score >= 3;
+            const isPlayerScoredMorethanLookUpScore = player1Score > 3;
+            const isAdvantage = Math.abs(player1Score - player2Score) === 1;
+            const player = player1Score > player2Score ? PLAYER1_NAME : PLAYER2_NAME;
+
             if(isPlayersScoreEqual) {
                 if(isDeuce) {
                     return Constants.DEUCE;
                 }
                 return SCORE_LOOKUP[player1Score] + ' all';
+            } else if(isPlayerScoredMorethanLookUpScore) {
+                if(isAdvantage) {
+                    return `Advantage ${player}`;
+                }
             } else {
                 return SCORE_LOOKUP[player1Score] + ', ' + SCORE_LOOKUP[player2Score];
             }
