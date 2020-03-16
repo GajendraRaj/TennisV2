@@ -24,6 +24,7 @@ export const Score = (props) => {
                 if(isAdvantage) {
                     return `Advantage ${player}`;
                 }
+                return `${player} wins`;
             } else {
                 return SCORE_LOOKUP[player1Score] + ', ' + SCORE_LOOKUP[player2Score];
             }
