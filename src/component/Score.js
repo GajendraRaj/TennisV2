@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export const Score = (props) => {
     const SCORE_LOOKUP = ["Love", "Fifteen", "Thirty", "Forty"];
     const [score, setScore] = useState(Constants.INITIAL_SCORE);
-    const { player1Score, player2Score } = props;
+    const { player1Score, player2Score, onGameOverNotification } = props;
     
     useEffect(() => {
         const gameScore = () => {
@@ -24,6 +24,8 @@ export const Score = (props) => {
                 if(isAdvantage) {
                     return `Advantage ${player}`;
                 }
+
+                onGameOverNotification();
                 return `${player} wins`;
             } else {
                 return SCORE_LOOKUP[player1Score] + ', ' + SCORE_LOOKUP[player2Score];
@@ -31,7 +33,7 @@ export const Score = (props) => {
         };
 
         setScore(gameScore);
-    }, [player1Score, player2Score, SCORE_LOOKUP]);
+    }, [player1Score, player2Score, onGameOverNotification, SCORE_LOOKUP]);
 
     return (
         <div>
@@ -42,5 +44,7 @@ export const Score = (props) => {
 }
 
 Score.prototype = {
-    player1Score: PropTypes.number.isRequired
+    player1Score: PropTypes.number.isRequired,
+    player2Score: PropTypes.number.isRequired,
+    onGameOverNotification: PropTypes.func.isRequired
 }

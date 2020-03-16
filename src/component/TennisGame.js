@@ -9,6 +9,7 @@ export const TennisGame = () => {
         player2Score: 0
     }
     const [score, setScore] = useState(state);
+    const [isGameOver, setIsGameOver] = useState(false);
 
     const updateScore = (player) => {
         if(player === 'Player 1') {
@@ -24,14 +25,18 @@ export const TennisGame = () => {
         }
     }
 
+    const gameOverNotification = () => {
+        setIsGameOver(true);
+    }
+
     return (
         <div>
             <div>
-                <Player name={Constants.PLAYER1_NAME} onUpdateScore={updateScore} />
-                <Player name={Constants.PLAYER2_NAME} onUpdateScore={updateScore} />
+                <Player name={Constants.PLAYER1_NAME} onUpdateScore={updateScore} isGameOver={isGameOver} />
+                <Player name={Constants.PLAYER2_NAME} onUpdateScore={updateScore} isGameOver={isGameOver} />
             </div>
             <div>
-                <Score player1Score={score.player1Score} player2Score={score.player2Score} />  
+                <Score player1Score={score.player1Score} player2Score={score.player2Score} onGameOverNotification={gameOverNotification} />  
             </div>
         </div>
 
