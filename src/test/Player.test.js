@@ -5,7 +5,7 @@ import { Player } from '../component/Player';
 describe(('Player component'), () => {
     let wrapper;
     beforeEach(() => {
-      wrapper = shallow(<Player name='Player 1' />);
+      wrapper = shallow(<Player name='Player 1' onUpdateScore={() => { }} />);
     });
   
     it('should render correctly', () => {

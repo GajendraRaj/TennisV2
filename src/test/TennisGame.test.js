@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { TennisGame } from '../component/TennisGame';
 import { Player } from '../component/Player';
 import { Score } from '../component/Score';
@@ -21,4 +21,17 @@ describe(('TennisGame component'), () => {
     it('should have one score', () => {
       expect(wrapper.find(Score)).toBeDefined();
     });
+});
+
+describe(('TennisGame functionality'), () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<TennisGame />);
+  });
+  
+  it("On Player 1 Scores once, Score Should be Fifteen Love", () => {
+    wrapper.find('Player').at(0).find('button').simulate('click');
+    expect(wrapper.find('Score').find('label').text()).toEqual("Fifteen, Love");
+  });
+
 });
