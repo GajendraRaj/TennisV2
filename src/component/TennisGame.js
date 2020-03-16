@@ -36,8 +36,10 @@ export const TennisGame = () => {
 
     return (
         <div>
-            <div>
-                <Player name={Constants.PLAYER1_NAME} onUpdateScore={updateScore} isGameOver={isGameOver} />
+            <div className="playerContainer">
+                <div className="leftContainer">
+                    <Player name={Constants.PLAYER1_NAME} onUpdateScore={updateScore} isGameOver={isGameOver} />
+                </div>
                 <Player name={Constants.PLAYER2_NAME} onUpdateScore={updateScore} isGameOver={isGameOver} />
             </div>
             <div>
