@@ -38,18 +38,24 @@ describe(('TennisGame functionality'), () => {
   });
 
   it("On Player 1 Scores twice, Score Should be Thirty Love", () => {
-    clickHandler(player1ScoreButton, 2);;
+    clickHandler(player1ScoreButton, 2);
     expect(scoreLabel.text()).toEqual("Thirty, Love");
   });
 
   it("On Player 1 Scores thrice, Score Should be Forty Love", () => {
-    clickHandler(player1ScoreButton, 3);;
+    clickHandler(player1ScoreButton, 3);
     expect(scoreLabel.text()).toEqual("Forty, Love");
   });
 
   it("On Player 2 Scores once, Score Should be Love Fifteen", () => {
-    clickHandler(player2ScoreButton, 1);;
+    clickHandler(player2ScoreButton, 1);
     expect(scoreLabel.text()).toEqual("Love, Fifteen");
+  });
+
+  it("On both Players Scores once, Score Should be Fifteen all", () => {
+    clickHandler(player1ScoreButton, 1);
+    clickHandler(player2ScoreButton, 1);
+    expect(scoreLabel.text()).toEqual("Fifteen all");
   });
 
 });
