@@ -11,9 +11,9 @@ export const Score = (props) => {
         const gameScore = () => {
             const isPlayersScoreEqual = player1Score === player2Score;
             const isDeuce = player1Score >= 3;
-            const isPlayerScoredMorethanLookUpScore = player1Score > 3;
+            const isPlayerScoredMorethanLookUpScore = player1Score > 3 || player2Score > 3;
             const isAdvantage = Math.abs(player1Score - player2Score) === 1;
-            const player = player1Score > player2Score ? PLAYER1_NAME : PLAYER2_NAME;
+            const player = player1Score > player2Score ? Constants.PLAYER1_NAME : Constants.PLAYER2_NAME;
 
             if(isPlayersScoreEqual) {
                 if(isDeuce) {
@@ -30,7 +30,7 @@ export const Score = (props) => {
         };
 
         setScore(gameScore);
-    }, [player1Score, SCORE_LOOKUP]);
+    }, [player1Score, player2Score, SCORE_LOOKUP]);
 
     return (
         <div>
