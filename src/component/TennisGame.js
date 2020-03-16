@@ -29,6 +29,11 @@ export const TennisGame = () => {
         setIsGameOver(true);
     }
 
+    const resetGame = () => {
+        setScore(state);
+        setIsGameOver(false);
+    }
+
     return (
         <div>
             <div>
@@ -36,7 +41,8 @@ export const TennisGame = () => {
                 <Player name={Constants.PLAYER2_NAME} onUpdateScore={updateScore} isGameOver={isGameOver} />
             </div>
             <div>
-                <Score player1Score={score.player1Score} player2Score={score.player2Score} onGameOverNotification={gameOverNotification} />  
+                <Score player1Score={score.player1Score} player2Score={score.player2Score} onGameOverNotification={gameOverNotification} />
+                <br /><button onClick={resetGame}>{Constants.RESET_BUTTON_TEXT}</button>  
             </div>
         </div>
 

@@ -5,5 +5,6 @@ export const Constants = {
     PLAYER2_NAME: "Player 2",
     SCORER_HEADER: "Score",
     INITIAL_SCORE: "Love all",
-    DEUCE: 'Deuce'
+    DEUCE: 'Deuce',
+    RESET_BUTTON_TEXT: "Reset Game"
 };

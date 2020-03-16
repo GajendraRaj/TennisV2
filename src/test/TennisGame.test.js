@@ -88,6 +88,13 @@ describe(('TennisGame functionality'), () => {
     expect(scoreLabel.text()).toEqual("Player 2 wins");
   });
 
+  it("On Reset the Game, Score Should be Love All", () => {
+    clickHandler(player1ScoreButton, 2);
+    clickHandler(player2ScoreButton, 2);
+    wrapper.find("button").at(2).simulate('click');
+    expect(wrapper.find('Score').find('label').text()).toEqual("Love all");
+  });
+
 });
 
 function clickHandler(button, times) {
