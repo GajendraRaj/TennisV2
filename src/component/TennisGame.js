@@ -16,6 +16,11 @@ export const TennisGame = () => {
                 ...prevState,
                 player1Score: prevState.player1Score + 1
             }));
+        } else {
+            setScore(prevState => ({
+                ...prevState,
+                player2Score: prevState.player2Score + 1
+            }));                
         }
     }
 
@@ -26,7 +31,7 @@ export const TennisGame = () => {
                 <Player name={Constants.PLAYER2_NAME} onUpdateScore={updateScore} />
             </div>
             <div>
-                <Score player1Score={score.player1Score} />  
+                <Score player1Score={score.player1Score} player2Score={score.player2Score} />  
             </div>
         </div>
 
