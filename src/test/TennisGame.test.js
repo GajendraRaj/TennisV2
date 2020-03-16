@@ -24,19 +24,27 @@ describe(('TennisGame component'), () => {
 });
 
 describe(('TennisGame functionality'), () => {
-  let wrapper;
+  let wrapper, scoreLabel, player1ScoreButton;
   beforeEach(() => {
     wrapper = mount(<TennisGame />);
+    scoreLabel = wrapper.find('Score').find("label");
+    player1ScoreButton = wrapper.find('Player').at(0).find("button");
   });
   
   it("On Player 1 Scores once, Score Should be Fifteen Love", () => {
-    wrapper.find('Player').at(0).find('button').simulate('click');
-    expect(wrapper.find('Score').find('label').text()).toEqual("Fifteen, Love");
+    player1ScoreButton.simulate('click');
+    expect(scoreLabel.text()).toEqual("Fifteen, Love");
   });
 
   it("On Player 1 Scores twice, Score Should be Thirty Love", () => {
-    wrapper.find('Player').at(0).find('button').simulate('click').simulate('click');
-    expect(wrapper.find('Score').find('label').text()).toEqual("Thirty, Love");
+    clickHandler(player1ScoreButton, 2);;
+    expect(scoreLabel.text()).toEqual("Thirty, Love");
   });
 
 });
+
+function clickHandler(button, times) {
+  for (let index = 0; index < times; index++) {
+    button.simulate('click');
+  }
+}
