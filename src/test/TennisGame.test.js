@@ -34,4 +34,9 @@ describe(('TennisGame functionality'), () => {
     expect(wrapper.find('Score').find('label').text()).toEqual("Fifteen, Love");
   });
 
+  it("On Player 1 Scores twice, Score Should be Thirty Love", () => {
+    wrapper.find('Player').at(0).find('button').simulate('click').simulate('click');
+    expect(wrapper.find('Score').find('label').text()).toEqual("Thirty, Love");
+  });
+
 });
