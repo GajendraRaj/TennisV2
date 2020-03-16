@@ -4,5 +4,6 @@ export const Constants = {
     PLAYER1_NAME: "Player 1",
     PLAYER2_NAME: "Player 2",
     SCORER_HEADER: "Score",
-    INITIAL_SCORE: "Love all"
+    INITIAL_SCORE: "Love all",
+    DEUCE: 'Deuce'
 };

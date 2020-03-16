@@ -7,10 +7,14 @@ export const Score = (props) => {
     const [score, setScore] = useState(Constants.INITIAL_SCORE);
     const { player1Score, player2Score } = props;
     const isPlayersScoreEqual = player1Score === player2Score;
+    const isDeuce = player1Score >= 3;
 
     useEffect(() => {
         const gameScore = () => {
             if(isPlayersScoreEqual) {
+                if(isDeuce) {
+                    return Constants.DEUCE;
+                }
                 return SCORE_LOOKUP[player1Score] + ' all';
             } else {
                 return SCORE_LOOKUP[player1Score] + ', ' + SCORE_LOOKUP[player2Score];

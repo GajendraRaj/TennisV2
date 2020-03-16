@@ -58,6 +58,12 @@ describe(('TennisGame functionality'), () => {
     expect(scoreLabel.text()).toEqual("Fifteen all");
   });
 
+  it("On both Players Scores thrice, Score Should be Deuce", () => {
+    clickHandler(player1ScoreButton, 3);
+    clickHandler(player2ScoreButton, 3);
+    expect(scoreLabel.text()).toEqual("Deuce");
+  });
+
 });
 
 function clickHandler(button, times) {
